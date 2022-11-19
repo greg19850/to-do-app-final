@@ -2,12 +2,14 @@ import React from 'react';
 import Task from "./Task";
 
 const ToDoList = (props) => {
+  const { changeStatus, editTask, deleteTask, message } = props
 
   const tasks = props.tasks.map(task => (
     <Task key={task.id}
       task={task}
-      change={props.change}
-      deleteTask={props.deleteTask}
+      changeStatus={changeStatus}
+      editTask={editTask}
+      deleteTask={deleteTask}
       active={task.active}
     />
   ));
@@ -15,7 +17,7 @@ const ToDoList = (props) => {
   return (
     <div className="todo-list">
       <h3>Task List:</h3>
-      <p className="alert-info">{props.message}</p>
+      <p className="alert-info">{message}</p>
       <ul>
         {tasks}
       </ul>

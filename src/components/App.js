@@ -44,6 +44,10 @@ class App extends Component {
     })
   }
 
+  editTask = (id) => {
+    console.log(id);
+  }
+
   deleteTask = (id) => {
     const tasks = [...this.state.tasks];
     const index = tasks.findIndex(task => task.id === id);
@@ -91,7 +95,8 @@ class App extends Component {
         />
         <ToDoList
           tasks={this.state.tasks}
-          change={this.changeTaskStatus}
+          changeStatus={this.changeTaskStatus}
+          editTask={this.editTask}
           deleteTask={this.deleteTask}
           message={this.state.message}
         />

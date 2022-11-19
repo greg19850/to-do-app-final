@@ -3,21 +3,24 @@ import React from 'react';
 
 const Task = (props) => {
   const { id, text, active } = props.task
+  const { changeStatus, editTask, deleteTask } = props
 
   return (
     <li className={!active ? "completed" : null} key={id}>{text} <div className="tools">
       <button
         className={!active ? "complete completed" : "complete"}
-        onClick={() => props.change(id)}
+        onClick={() => changeStatus(id)}
       >
         <i className="fas fa-check"></i>
       </button>
       <button
-        className="edit">
+        className="edit"
+        onClick={() => editTask(id)}
+      >
         EDIT
       </button>
       <button className="delete"
-        onClick={() => props.deleteTask(id)}
+        onClick={() => deleteTask(id)}
       >
         <i className="fas fa-times"></i>
       </button>
