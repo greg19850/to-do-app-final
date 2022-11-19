@@ -16,16 +16,19 @@ class App extends Component {
         id: 1,
         text: 'Do car service',
         active: true,
+        edit: false,
       },
       {
         id: 2,
         text: 'Buy tea',
         active: true,
+        edit: false,
       },
       {
         id: 3,
         text: 'Relax',
         active: true,
+        edit: false,
       },
     ],
     message: "No Tasks On List.",
@@ -45,13 +48,29 @@ class App extends Component {
   }
 
   editTask = (id) => {
-    console.log(id);
+    const tasks = [...this.state.tasks];
+
+    tasks.forEach(task => {
+      if (task.id === id) {
+        task.edit = true;
+      }
+    })
+    console.log(tasks);
+    this.setState({
+      tasks
+    })
   }
 
   deleteTask = (id) => {
     const tasks = [...this.state.tasks];
     const index = tasks.findIndex(task => task.id === id);
     tasks.splice(index, 1);
+
+    if (tasks.length === 0) {
+      this.setState({
+        message: "No Tasks On List."
+      })
+    }
 
     this.setState({
       tasks
@@ -100,7 +119,7 @@ class App extends Component {
           deleteTask={this.deleteTask}
           message={this.state.message}
         />
-        <EditPopup />
+        <EditPopup taks={this.state.tasks} />
       </div>
     );
   }
