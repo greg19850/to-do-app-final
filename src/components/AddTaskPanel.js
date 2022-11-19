@@ -27,7 +27,7 @@ class AddTaskPanel extends Component {
 
   render() {
     return (
-      <div className="header">
+      <div className="add-task">
         <h1>ToDo List</h1>
         <input type="text" className="todo-input" value={this.state.newTask} onChange={this.handleInputTextChange} placeholder="Add Task..." />
         <button className="add-btn" onClick={this.handleAddTaskToList}>Add</button>

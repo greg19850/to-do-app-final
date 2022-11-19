@@ -56,9 +56,10 @@ class App extends Component {
         task.edit = true;
       }
     })
-    console.log(tasks);
+
     this.setState({
-      tasks
+      tasks,
+      popupDisplay: "flex"
     })
   }
 
@@ -120,7 +121,7 @@ class App extends Component {
           deleteTask={this.deleteTask}
           message={this.state.message}
         />
-        <EditPopup display={this.state.popupDisplay} />
+        <EditPopup tasks={this.state.tasks} display={this.state.popupDisplay} />
       </div>
     );
   }
