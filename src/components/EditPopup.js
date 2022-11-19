@@ -1,9 +1,10 @@
 import React from 'react';
 
 
-const EditPopup = () => {
+const EditPopup = (props) => {
+  const { display } = props;
   return (
-    <div class="popup">
+    <div style={{ display }} className="popup">
       <h3>Edit Task:</h3>
       <div className="popup-body">
         <p className="popup-info"></p>

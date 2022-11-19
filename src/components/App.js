@@ -32,6 +32,7 @@ class App extends Component {
       },
     ],
     message: "No Tasks On List.",
+    popupDisplay: "none",
   }
 
   changeTaskStatus = (id) => {
@@ -119,7 +120,7 @@ class App extends Component {
           deleteTask={this.deleteTask}
           message={this.state.message}
         />
-        <EditPopup taks={this.state.tasks} />
+        <EditPopup display={this.state.popupDisplay} />
       </div>
     );
   }
