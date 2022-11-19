@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 
 import AddTaskPanel from "./AddTaskPanel";
 import ToDoList from "./ToDoList";
+import EditPopup from "./EditPopup";
 
 import './App.scss';
 
@@ -94,6 +95,7 @@ class App extends Component {
           deleteTask={this.deleteTask}
           message={this.state.message}
         />
+        <EditPopup />
       </div>
     );
   }
