@@ -1,11 +1,26 @@
 import React from 'react';
 
 
-const Task = () => {
+const Task = (props) => {
+  const { id, text, active } = props.task
+
   return (
-    <li id="test">Buy Tea <div class="tools">
-      <button class="complete"><i class="fas fa-check"></i></button><button
-        class="edit">EDIT</button><button class="delete"><i class="fas fa-times"></i></button>
+    <li className={!active ? "completed" : null} key={id}>{text} <div className="tools">
+      <button
+        className={!active ? "complete completed" : "complete"}
+        onClick={() => props.change(id)}
+      >
+        <i className="fas fa-check"></i>
+      </button>
+      <button
+        className="edit">
+        EDIT
+      </button>
+      <button className="delete"
+        onClick={() => props.deleteTask(id)}
+      >
+        <i className="fas fa-times"></i>
+      </button>
     </div>
     </li>
   );

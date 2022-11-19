@@ -65,6 +65,13 @@
       list-style: none;
       background-color: var(--light);
 
+      &.completed {
+        font-size: 12px;
+        font-style: italic;
+        color: var(--light-dark);
+        text-decoration: line-through;
+      }
+
       .tools {
         display: inline-block;
 
