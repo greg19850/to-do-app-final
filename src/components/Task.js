@@ -3,7 +3,7 @@ import React from 'react';
 
 const Task = (props) => {
   const { id, text, active } = props.task
-  const { changeStatus, editTask, deleteTask } = props
+  const { changeStatus, activatePopup, deleteTask } = props
 
   return (
     <li className={!active ? "completed" : null} key={id}>{text} <div className="tools">
@@ -13,12 +13,12 @@ const Task = (props) => {
       >
         <i className="fas fa-check"></i>
       </button>
-      <button
+      {/* <button
         className="edit"
-        onClick={() => editTask(id)}
+        onClick={() => activatePopup(id)}
       >
         EDIT
-      </button>
+      </button> */}
       <button className="delete"
         onClick={() => deleteTask(id)}
       >

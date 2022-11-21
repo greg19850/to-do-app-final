@@ -2,13 +2,13 @@ import React from 'react';
 import Task from "./Task";
 
 const ToDoList = (props) => {
-  const { changeStatus, editTask, deleteTask, message } = props
+  const { changeStatus, activatePopup, deleteTask, message } = props
 
   const tasks = props.tasks.map(task => (
     <Task key={task.id}
       task={task}
       changeStatus={changeStatus}
-      editTask={editTask}
+      activatePopup={activatePopup}
       deleteTask={deleteTask}
       active={task.active}
     />

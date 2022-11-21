@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 import AddTaskPanel from "./AddTaskPanel";
 import ToDoList from "./ToDoList";
-import EditPopup from "./EditPopup";
+// import EditPopup from "./EditPopup";
 
 import './App.scss';
 
@@ -48,20 +48,24 @@ class App extends Component {
     })
   }
 
-  editTask = (id) => {
-    const tasks = [...this.state.tasks];
+  // activatePopup = (id, newTaskContent) => {
+  //   const tasks = [...this.state.tasks];
 
-    tasks.forEach(task => {
-      if (task.id === id) {
-        task.edit = true;
-      }
-    })
+  //   tasks.forEach(task => {
+  //     if (task.id === id) {
+  //       task.edit = true;
+  //     }
+  //   })
 
-    this.setState({
-      tasks,
-      popupDisplay: "flex"
-    })
-  }
+  //   this.setState({
+  //     tasks,
+  //     popupDisplay: "flex"
+  //   });
+  // }
+
+  // editTask = (id, newTaskContent) => {
+
+  // }
 
   deleteTask = (id) => {
     const tasks = [...this.state.tasks];
@@ -117,11 +121,10 @@ class App extends Component {
         <ToDoList
           tasks={this.state.tasks}
           changeStatus={this.changeTaskStatus}
-          editTask={this.editTask}
           deleteTask={this.deleteTask}
           message={this.state.message}
         />
-        <EditPopup tasks={this.state.tasks} display={this.state.popupDisplay} />
+        {/* <EditPopup editPopupDisplay={this.activatePopup} display={this.state.popupDisplay} /> */}
       </div>
     );
   }
