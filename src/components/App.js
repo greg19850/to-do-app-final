@@ -12,24 +12,24 @@ class App extends Component {
 
   state = {
     tasks: [
-      {
-        id: 1,
-        text: 'Do car service',
-        active: true,
-        edit: false,
-      },
-      {
-        id: 2,
-        text: 'Buy tea',
-        active: true,
-        edit: false,
-      },
-      {
-        id: 3,
-        text: 'Relax',
-        active: true,
-        edit: false,
-      },
+      // {
+      //   id: 1,
+      //   text: 'Do car service',
+      //   active: true,
+      //   edit: false,
+      // },
+      // {
+      //   id: 2,
+      //   text: 'Buy tea',
+      //   active: true,
+      //   edit: false,
+      // },
+      // {
+      //   id: 3,
+      //   text: 'Relax',
+      //   active: true,
+      //   edit: false,
+      // },
     ],
     message: "No Tasks On List.",
     popupDisplay: "none",
