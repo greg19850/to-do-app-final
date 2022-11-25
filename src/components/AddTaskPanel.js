@@ -41,7 +41,7 @@ const AddTaskPanel = ({ tasks, setTasks, taskText, setTaskText, taskId, setTaskI
         className="btn add-btn"
         onClick={handleAddTaskToList}
       >
-        <i class="fa-solid fa-plus"></i>
+        <i className="fa-solid fa-plus"></i>
       </button>
       <select className="btn sort-btn">
         <option value="all">All</option>

@@ -19,11 +19,11 @@
     .todo-input {
       flex-grow: 1;
       padding: 10px 20px;
-      // margin-right: 10px;
       border: none;
       border-radius: 5px 0 0 5px;
       color: var(--light-dark);
       background-color: var(--light);
+      outline: none;
     }
 
     .btn {
