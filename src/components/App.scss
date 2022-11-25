@@ -5,11 +5,6 @@
   box-shadow: 4px 4px 5px rgba(82, 82, 82, .4);
   border-radius: 5px;
 
-  @media screen and (max-width: 768px) {
-    width: 90%;
-    margin: auto;
-  }
-
   h1 {
     padding: 20px 20px 10px;
     color: var(--light);
@@ -29,20 +24,10 @@
       border-radius: 5px 0 0 5px;
       color: var(--light-dark);
       background-color: var(--light);
-
-      @media screen and (max-width: 768px) {
-        width: 100%;
-      }
     }
 
-<<<<<<< HEAD
     .btn {
       padding: 10px 20px;
-=======
-    .add-btn {
-      padding: 10px 22px;
-      margin: 5px;
->>>>>>> aea274307901843819be6882b09ee89d2a058a46
       border: none;
       border-radius: 5px;
       color: var(--deep-blue);
