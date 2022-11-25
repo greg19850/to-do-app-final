@@ -1,31 +1,69 @@
 import React from 'react';
 
 
-const Task = (props) => {
-  const { id, text, active } = props.task
-  const { changeStatus, activatePopup, deleteTask } = props
+const Task = ({ tasks, setTasks, setIsPopupActive, setEditId, setEditText, setMessage }) => {
 
-  return (
-    <li className={!active ? "completed" : null} key={id}>{text} <div className="tools">
+  const handleTaskActiveStatus = (id) => {
+
+    tasks = [...tasks];
+
+    tasks.forEach(task => {
+      if (task.id === id) {
+        task.active = !task.active
+      }
+    });
+
+    setTasks(tasks)
+  }
+
+  const handleTaskDelete = (id) => {
+    tasks = [...tasks];
+
+    const index = tasks.findIndex(task => task.id === id);
+
+    tasks.splice(index, 1);
+
+    if (tasks.length === 0) setMessage("No Tasks On List.")
+
+    setTasks(tasks);
+  }
+
+  const handleEditPopup = (id, taskText) => {
+    setEditId(id);
+    setEditText(taskText);
+
+    setIsPopupActive(true);
+
+  }
+
+  const task = tasks.map(task => (
+    <li key={task.id} className={!task.active ? "completed" : null} >{task.text} <div className="tools">
       <button
-        className={!active ? "complete completed" : "complete"}
-        onClick={() => changeStatus(id)}
+        className={!task.active ? "complete completed" : "complete"}
+        onClick={() => handleTaskActiveStatus(task.id)}
       >
         <i className="fas fa-check"></i>
       </button>
-      {/* <button
+      <button
         className="edit"
-        onClick={() => activatePopup(id)}
+        onClick={() => handleEditPopup(task.id, task.text)}
       >
         EDIT
-      </button> */}
-      <button className="delete"
-        onClick={() => deleteTask(id)}
+      </button>
+      <button
+        className="delete"
+        onClick={() => handleTaskDelete(task.id)}
       >
-        <i className="fas fa-times"></i>
+        <i className="fa-solid fa-trash"></i>
       </button>
     </div>
     </li>
+  ));
+
+  return (
+    <>
+      {task}
+    </>
   );
 }
 

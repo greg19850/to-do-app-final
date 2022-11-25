@@ -1,133 +1,72 @@
-import React, { Component } from 'react';
+import React, { useState } from 'react';
 
 import AddTaskPanel from "./AddTaskPanel";
 import ToDoList from "./ToDoList";
-// import EditPopup from "./EditPopup";
+import EditPopup from "./EditPopup"
 
 import './App.scss';
 
-class App extends Component {
+const App = () => {
 
-  id = 4
 
-  state = {
-    tasks: [
-      // {
-      //   id: 1,
-      //   text: 'Do car service',
-      //   active: true,
-      //   edit: false,
-      // },
-      // {
-      //   id: 2,
-      //   text: 'Buy tea',
-      //   active: true,
-      //   edit: false,
-      // },
-      // {
-      //   id: 3,
-      //   text: 'Relax',
-      //   active: true,
-      //   edit: false,
-      // },
-    ],
-    message: "No Tasks On List.",
-    popupDisplay: "none",
-  }
+  const [tasks, setTasks] = useState([
+    //   {
+    //   id: 1,
+    //   text: 'Eat',
+    //   active: true,
+    // },
+    // {
+    //   id: 2,
+    //   text: 'Sleep',
+    //   active: true,
+    // },
+    // {
+    //   id: 3,
+    //   text: 'Train',
+    //   active: true,
+    // }
+  ]);
+  const [taskText, setTaskText] = useState("");
+  const [message, setMessage] = useState("No Tasks On List.");
+  const [taskId, setTaskId] = useState(4);
+  const [isPopupActive, setIsPopupActive] = useState(false);
+  const [editId, setEditId] = useState(null);
+  const [editText, setEditText] = useState("");
 
-  changeTaskStatus = (id) => {
-    const tasks = [...this.state.tasks];
-    tasks.forEach(task => {
-      if (task.id === id) {
-        task.active = !task.active;
-      }
-    })
 
-    this.setState({
-      tasks
-    })
-  }
-
-  // activatePopup = (id, newTaskContent) => {
-  //   const tasks = [...this.state.tasks];
-
-  //   tasks.forEach(task => {
-  //     if (task.id === id) {
-  //       task.edit = true;
-  //     }
-  //   })
-
-  //   this.setState({
-  //     tasks,
-  //     popupDisplay: "flex"
-  //   });
-  // }
-
-  // editTask = (id, newTaskContent) => {
-
-  // }
-
-  deleteTask = (id) => {
-    const tasks = [...this.state.tasks];
-    const index = tasks.findIndex(task => task.id === id);
-    tasks.splice(index, 1);
-
-    if (tasks.length === 0) {
-      this.setState({
-        message: "No Tasks On List."
-      })
-    }
-
-    this.setState({
-      tasks
-    })
-  }
-
-  addTask = (text) => {
-    if (text.length > 2) {
-
-      const newTask = {
-        id: this.id,
-        text,
-        active: true,
-      }
-      this.id++
-
-      this.setState(prevState => ({
-        tasks: [...prevState.tasks, newTask],
-        message: ""
-      }))
-
-      return true
-    } else if (text.length && text.length <= 2) {
-      this.setState(({
-        message: "Task requires at least 3 characters!"
-      }))
-    } else if (!text.length) {
-      this.setState(({
-        message: "Please enter task text!"
-      }))
-    }
-
-  }
-
-  render() {
-    return (
-      <div className="todo" >
-        <AddTaskPanel
-          addTask={this.addTask}
-          message={this.state.errorMessage}
-        />
-        <ToDoList
-          tasks={this.state.tasks}
-          changeStatus={this.changeTaskStatus}
-          deleteTask={this.deleteTask}
-          message={this.state.message}
-        />
-        {/* <EditPopup editPopupDisplay={this.activatePopup} display={this.state.popupDisplay} /> */}
-      </div>
-    );
-  }
+  return (
+    <div className="todo" >
+      <h1>ToDo List</h1>
+      <AddTaskPanel
+        tasks={tasks}
+        setTasks={setTasks}
+        taskText={taskText}
+        setTaskText={setTaskText}
+        taskId={taskId}
+        setTaskId={setTaskId}
+        setMessage={setMessage}
+      />
+      <ToDoList
+        tasks={tasks}
+        setTasks={setTasks}
+        message={message}
+        setMessage={setMessage}
+        setIsPopupActive={setIsPopupActive}
+        setEditId={setEditId}
+        setEditText={setEditText}
+      />
+      {isPopupActive
+        &&
+        <EditPopup
+          tasks={tasks}
+          setTasks={setTasks}
+          editId={editId}
+          editText={editText}
+          setEditText={setEditText}
+          setIsPopupActive={setIsPopupActive}
+        />}
+    </div>
+  );
 }
 
 export default App;

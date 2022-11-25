@@ -1,29 +1,28 @@
 import React from 'react';
+
 import Task from "./Task";
 
-const ToDoList = (props) => {
-  const { changeStatus, activatePopup, deleteTask, message } = props
 
-  const tasks = props.tasks.map(task => (
-    <Task key={task.id}
-      task={task}
-      changeStatus={changeStatus}
-      activatePopup={activatePopup}
-      deleteTask={deleteTask}
-      active={task.active}
-    />
-  ));
+
+const ToDoList = ({ message, tasks, setTasks, setIsPopupActive, setEditId, setEditText, setMessage }) => {
+
 
   return (
     <div className="todo-list">
-      <h3>Task List:</h3>
+      <h3>Tasks List:</h3>
       <p className="alert-info">{message}</p>
       <ul>
-        {tasks}
+        <Task
+          tasks={tasks}
+          setTasks={setTasks}
+          setIsPopupActive={setIsPopupActive}
+          setEditId={setEditId}
+          setEditText={setEditText}
+          setMessage={setMessage}
+        />
       </ul>
 
     </div>
-
   );
 }
 

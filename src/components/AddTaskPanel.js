@@ -1,40 +1,55 @@
-import React, { Component } from 'react';
+import React from 'react';
 
-class AddTaskPanel extends Component {
+const AddTaskPanel = ({ tasks, setTasks, taskText, setTaskText, taskId, setTaskId, setMessage }) => {
 
-  state = {
-    newTask: ""
+  const handleInputTextChange = (e) => {
+    setTaskText(e.target.value)
   }
 
-  handleInputTextChange = (e) => {
-    this.setState({
-      newTask: e.target.value
-    })
-  }
+  const handleAddTaskToList = () => {
+    if (taskText.length > 2) {
+      const task = {
+        id: taskId,
+        text: taskText,
+        active: true,
+      }
 
-  handleAddTaskToList = () => {
-    console.log(this.props);
-    const { newTask } = this.state;
+      setTaskId(prevValue => prevValue + 1)
+      setTasks([...tasks, task]);
+      setMessage("")
+      setTaskText("")
 
-    const add = this.props.addTask(newTask)
-
-    if (add) {
-      this.setState({
-        newTask: ""
-      })
+    } else if (taskText && taskText.length <= 2) {
+      setMessage("Task name requires at least 3 characters!")
+    } else if (!taskText.length) {
+      setMessage("Please enter task text!")
     }
+
+
   }
 
-  render() {
-    return (
-      <div className="add-task">
-        <h1>ToDo List</h1>
-        <input type="text" className="todo-input" value={this.state.newTask} onChange={this.handleInputTextChange} placeholder="Add Task..." />
-        <button className="add-btn" onClick={this.handleAddTaskToList}>Add</button>
-      </div>
-    );
-  }
-
+  return (
+    <div className="add-task">
+      < input
+        type="text"
+        className="todo-input"
+        value={taskText}
+        onChange={handleInputTextChange}
+        placeholder="Add Task..."
+      />
+      <button
+        className="btn add-btn"
+        onClick={handleAddTaskToList}
+      >
+        <i class="fa-solid fa-plus"></i>
+      </button>
+      <select className="btn sort-btn">
+        <option value="all">All</option>
+        <option value="active">Active</option>
+        <option value="complete">Complete</option>
+      </select>
+    </div >
+  )
 }
 
 export default AddTaskPanel;
