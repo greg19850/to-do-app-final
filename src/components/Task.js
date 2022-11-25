@@ -1,7 +1,7 @@
 import React from 'react';
 
 
-const Task = ({ tasks, setTasks, setIsPopupActive, setEditId, setEditText, setMessage }) => {
+const Task = ({ tasks, setTasks, setIsPopupActive, setEditId, setEditText, setMessage, filteredTasks }) => {
 
   const handleTaskActiveStatus = (id) => {
 
@@ -36,7 +36,7 @@ const Task = ({ tasks, setTasks, setIsPopupActive, setEditId, setEditText, setMe
 
   }
 
-  const task = tasks.map(task => (
+  const task = filteredTasks.map(task => (
     <li key={task.id} className={!task.active ? "completed" : null} >{task.text} <div className="tools">
       <button
         className={!task.active ? "complete completed" : "complete"}

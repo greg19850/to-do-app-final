@@ -4,7 +4,7 @@ import Task from "./Task";
 
 
 
-const ToDoList = ({ message, tasks, setTasks, setIsPopupActive, setEditId, setEditText, setMessage }) => {
+const ToDoList = ({ message, tasks, setTasks, setIsPopupActive, setEditId, setEditText, setMessage, filteredTasks }) => {
 
 
   return (
@@ -19,6 +19,7 @@ const ToDoList = ({ message, tasks, setTasks, setIsPopupActive, setEditId, setEd
           setEditId={setEditId}
           setEditText={setEditText}
           setMessage={setMessage}
+          filteredTasks={filteredTasks}
         />
       </ul>
 

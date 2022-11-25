@@ -1,6 +1,6 @@
 import React from 'react';
 
-const AddTaskPanel = ({ tasks, setTasks, taskText, setTaskText, taskId, setTaskId, setMessage }) => {
+const AddTaskPanel = ({ tasks, setTasks, setStatus, taskText, setTaskText, taskId, setTaskId, setMessage, setFilteredTasks }) => {
 
   const handleInputTextChange = (e) => {
     setTaskText(e.target.value)
@@ -24,9 +24,9 @@ const AddTaskPanel = ({ tasks, setTasks, taskText, setTaskText, taskId, setTaskI
     } else if (!taskText.length) {
       setMessage("Please enter task text!")
     }
-
-
   }
+
+  const handleStatusChange = (e) => setStatus(e.target.value)
 
   return (
     <div className="add-task">
@@ -43,7 +43,7 @@ const AddTaskPanel = ({ tasks, setTasks, taskText, setTaskText, taskId, setTaskI
       >
         <i className="fa-solid fa-plus"></i>
       </button>
-      <select className="btn sort-btn">
+      <select className="btn sort-btn" onChange={handleStatusChange}>
         <option value="all">All</option>
         <option value="active">Active</option>
         <option value="complete">Complete</option>
