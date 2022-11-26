@@ -18,6 +18,7 @@
 
     .todo-input {
       flex-grow: 1;
+      font-size: 18px;
       padding: 10px 20px;
       border: none;
       border-radius: 5px 0 0 5px;
@@ -27,9 +28,10 @@
     }
 
     .btn {
-      padding: 10px 20px;
+      padding: 10px 25px 10px 15px;
       border: none;
       border-radius: 5px;
+      font-size: 15px;
       color: var(--deep-blue);
       background-color: var(--light);
       text-transform: uppercase;
@@ -37,9 +39,22 @@
       transition: background-color .3s, color .3s;
 
       &.add-btn {
+        padding: 10px 15px;
         border-radius: 0 5px 5px 0;
         margin-right: 10px;
-        font-size: 18px
+
+        i {
+          font-size: 1.5em;
+        }
+      }
+
+      &.select {
+        appearance: none;
+        background-image: url(../sort-down-solid.svg);
+        background-repeat: no-repeat;
+        background-position: right 0.5rem top 40%;
+        background-size: 0.65rem auto;
+        outline: none;
       }
 
       &:hover {

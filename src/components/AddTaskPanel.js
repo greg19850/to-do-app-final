@@ -22,7 +22,7 @@ const AddTaskPanel = ({ tasks, setTasks, setStatus, taskText, setTaskText, taskI
     } else if (taskText && taskText.length <= 2) {
       setMessage("Task name requires at least 3 characters!")
     } else if (!taskText.length) {
-      setMessage("Please enter task text!")
+      setMessage("Please enter task name!")
     }
   }
 
@@ -41,9 +41,9 @@ const AddTaskPanel = ({ tasks, setTasks, setStatus, taskText, setTaskText, taskI
         className="btn add-btn"
         onClick={handleAddTaskToList}
       >
-        <i className="fa-solid fa-plus"></i>
+        <i className="fa-solid fa-square-plus"></i>
       </button>
-      <select className="btn sort-btn" onChange={handleStatusChange}>
+      <select className="btn select" onChange={handleStatusChange}>
         <option value="all">All</option>
         <option value="active">Active</option>
         <option value="complete">Complete</option>
