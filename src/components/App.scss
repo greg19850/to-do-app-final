@@ -5,15 +5,25 @@
   box-shadow: 4px 4px 5px rgba(82, 82, 82, .4);
   border-radius: 5px;
 
+  @media screen and (max-width: 768px) {
+    width: 90%;
+    margin: auto;
+  }
+
   h1 {
     padding: 20px 20px 10px;
     color: var(--light);
     border-radius: 5px 5px 0 0;
     text-transform: uppercase;
+
+    @media screen and (max-width: 768px) {
+      width: 100%;
+    }
   }
 
   .add-task {
     display: flex;
+    flex-wrap: wrap;
     padding: 20px;
 
     .todo-input {
@@ -25,6 +35,11 @@
       color: var(--light-dark);
       background-color: var(--light);
       outline: none;
+
+      @media screen and (max-width: 400px) {
+        width: 90%;
+        border-radius: 5px;
+      }
     }
 
     .btn {
@@ -46,6 +61,11 @@
         i {
           font-size: 1.5em;
         }
+
+        @media screen and (max-width: 402px) {
+          margin: 5px auto;
+          border-radius: 5px;
+        }
       }
 
       &.select {
@@ -55,6 +75,10 @@
         background-position: right 0.5rem top 40%;
         background-size: 0.65rem auto;
         outline: none;
+
+        @media screen and (max-width: 768px) {
+          margin: 5px auto;
+        }
       }
 
       &:hover {
@@ -146,6 +170,12 @@
     background-color: var(--light-dark);
     border-radius: 5px;
 
+
+    @media screen and (max-width: 830px) {
+      width: 90%;
+      margin: auto;
+    }
+
     h3 {
       padding: 20px;
     }
@@ -183,6 +213,12 @@
         text-transform: uppercase;
         cursor: pointer;
         transition: background-color .3s, color .3s;
+
+        @media screen and (max-width: 460px) {
+          padding: 10px 5px;
+          margin: 10px;
+          width: 40%;
+        }
 
         &:hover {
           color: #fff;
